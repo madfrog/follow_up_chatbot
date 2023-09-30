@@ -10,9 +10,7 @@ A realty chatbot which helps business owners to make appointments witch potentia
 
 - Push channel integration: Currently, integration has been done with WeChat Mini Program, which can complete the appointment process on the Mini Program.
 
-<video id="video" controls="" preload="none" poster="Cover">
-      <source id="mp4" src="./cover.mp4" type="video/mp4">
-</video>
+<video src="./cover.mp4"></video>
 
 # References
 
