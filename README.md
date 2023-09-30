@@ -1,13 +1,16 @@
 # follow_up_chatbot
 
-A realty chatbot which helps business owners to make appointments witch potential customers at any time. 这是一个测试性的项目，目的是验证生成式 AI 可以代替客户自主完成与客户的预约。本项目实现了以下功能：
+A realty chatbot which helps business owners to make appointments witch potential customers at any time. This is a test project aimed at verifying whether generative AI can replace customers in making appointments with clients. The project has implemented the following functions:
 
-- 角色设定：机器人被设定为一个 realty 客服机器人
-- 自主预约：在客户允许的前提下，自主和客户预约不动产的背景情况，例如交易意图、房产大小、预算、购置计划等，整个流程由机器人自主进行
-- 信息汇总：预约流程完成之后，机器人会自动汇总客户背景情况，并写入数据库，并提供查询接口，供业务系统对接使用
-- 推送渠道集成：目前和微信小程序进行了集成，能够在小程序上完成预约流程
+- Role setting: The robot is set as a realty customer service robot.
 
-<video id="video" controls="" preload="none" poster="封面">
+- Autonomous appointment: With the customer's permission, the robot autonomously makes an appointment with the customer regarding the background information of the real estate, such as transaction intention, property size, budget, purchase plan, etc. The entire process is carried out autonomously by the robot.
+
+- Information summary: After the appointment process is completed, the robot automatically summarizes the customer's background information and writes it into the database. It also provides a query interface for the business system to use.
+
+- Push channel integration: Currently, integration has been done with WeChat Mini Program, which can complete the appointment process on the Mini Program.
+
+<video id="video" controls="" preload="none" poster="Cover">
       <source id="mp4" src="./cover.mp4" type="video/mp4">
 </videos>
 
