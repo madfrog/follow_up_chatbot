@@ -12,7 +12,7 @@ A realty chatbot which helps business owners to make appointments witch potentia
 
 <video id="video" controls="" preload="none" poster="Cover">
       <source id="mp4" src="./cover.mp4" type="video/mp4">
-</videos>
+</video>
 
 # References
 
