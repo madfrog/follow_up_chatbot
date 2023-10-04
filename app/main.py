@@ -2,15 +2,19 @@
 
 from flask import Flask, request
 # from weixin import receive, reply
-import make_query as engine
+from make_query import ChatEngine
 import os
 from langchain.memory import ConversationBufferMemory
+from history_db import HistoryHandler
 
 
 app = Flask(__name__)
 
-# llm, chat_prompt, memory, chat_message_history = engine.init()
-llm, chat_prompt, memory = engine.init()
+
+engine = ChatEngine()
+llm, chat_prompt, chat_message_history = engine.init()
+memory = ConversationBufferMemory(
+    memory_key="chat_history")
 
 conversations = {}
 
@@ -57,13 +61,29 @@ def make_appointment():
 def chat():
     data = request.get_json()
     query = data['query']
+    '''
+    TODO: user_id and session_id
+    '''
+    user_id = request.headers.get('User-Id')
+    session_id = request.headers.get('Session-Id')
+    print(f'user id: {user_id}, session_id: {session_id}')
     if query.lower() == "hello":
         query = ""
         global memory
-        # memory = ConversationBufferMemory(
-        #     memory_key="chat_history", chat_memory=chat_message_history)
-        memory = ConversationBufferMemory(memory_key="chat_history")
-    output = engine.gpt_response(llm, chat_prompt, memory, query)
+        memory = ConversationBufferMemory(
+            memory_key="chat_history")
+
+    output = engine.gpt_response(
+        user_id, session_id, llm, chat_prompt, memory, query)
+    # save chat history
+    history_handler = HistoryHandler()
+    human_data = {"user_id": user_id, "session_id": session_id,
+                  "type": 1, "message": query}
+    history_handler.insert_one_history(**human_data)
+    ai_data = {"user_id": user_id, "session_id": session_id,
+               "type": 0, "message": output}
+    history_handler.insert_one_history(**ai_data)
+
     return {'answer': output}
 
 
